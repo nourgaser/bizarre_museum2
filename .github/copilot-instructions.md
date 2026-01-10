@@ -43,8 +43,8 @@ You must distinguish between files you can write and actions the user must perfo
 
 ## 📝 THE "PROJECT_STATUS.md" PROTOCOL
 
-- **Ingest:** Read `PROJECT_STATUS.md` at the start of every prompt to orient yourself.
-- **Update:** At the end of every response, if a task was completed or the phase changed, output the _specific markdown change_ required to update `PROJECT_STATUS.md`.
+- **Ingest:** Read `PROJECT_STATUS.md` (stored as `STATUS.MD` here) at the start of every prompt to orient yourself.
+- **Auto-Update:** When tasks complete or phases change, directly edit `STATUS.MD` yourself. Do **not** ask the user to apply snippets; commit the change in the file during the response.
 
 ## 🛠️ TECHNICAL CONSTRAINTS
 

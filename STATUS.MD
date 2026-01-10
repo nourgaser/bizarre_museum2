@@ -16,8 +16,8 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 - [x] **[Backend]** Initialize Express/Mongoose repo.
 - [x] **[Backend]** Create `Item` and `Concoction` Schemas.
 - [x] **[Backend]** Implement endpoints: `POST /concoctions`, `GET /concoctions/:code`.
-- [ ] **[Unity]** Create URP Project (User Action).
-- [ ] **[Unity]** specific `APIClient.cs` to verify connection (Ping test).
+- [x] **[Unity]** Create URP Project (User Action).
+- [x] **[Unity]** specific `APIClient.cs` to verify connection (Ping test) — client + tester scripts added; backend round-trip pending Play Mode verification.
 
 ### Phase 2: Data & Core Systems (Hour 1.5 - 3)
 
@@ -46,7 +46,7 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 
 ## 🪵 Session Log
 
-- _Session Started._
+- Unity 3D-URP project created; backend API client and tester scripts added for ping/create/get verification.
 
 ## References
 
