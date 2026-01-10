@@ -1,0 +1,21 @@
+services:
+  bizarre-museum-api:
+    build:
+      context: ./Backend
+    container_name: bizarre-museum-api
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - MONGO_URI=${MONGO_URI:?"Environment variable MONGO_URI is required"}
+      - VIRTUAL_HOST=bm-api.nourgaser.com
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=bm-api.nourgaser.com
+    networks:
+      - nginx-proxy
+    restart: always
+
+networks:
+  nginx-proxy:
+    external: true

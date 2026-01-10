@@ -1,0 +1,27 @@
+{
+    "files.exclude": {
+        "*DontShip*": true,
+        "*DoNotShip*": true,
+        "Temp/": true,
+        "Library/": true,
+        "/[Bb]uild": true,
+        "**/build*": true,
+        "/[Oo]bj/": true,
+        "/[Ll]ogs/": true,
+        "UserSettings/": true,
+        ".utmp": true,
+        "**/*.meta": true
+    },
+    "files.associations": {
+        "*.asset": "yaml",
+        "*.meta": "yaml",
+        "*.prefab": "yaml",
+        "*.unity": "yaml"
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.sln": "*.csproj",
+        "*.slnx": "*.csproj"
+    },
+    "dotnet.defaultSolution": "bizarre_museum2.slnx"
+}
