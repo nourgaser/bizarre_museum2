@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+	<ui:Style src="MainMenu.uss" />
+
+	<ui:VisualElement class="main-root">
+		<ui:Label class="watermark" text="BIZARRE MUSEUM // PROTO" />
+
+		<ui:VisualElement class="card">
+			<ui:Label class="title" text="Bizarre Museum" />
+			<ui:Label class="subtitle" text="Dreams in. Wonders out." />
+
+			<ui:VisualElement class="button-group">
+				<ui:Button name="btn-ar" class="menu-button" text="Dream Mode (AR)" />
+				<ui:Button name="btn-vr" class="menu-button" text="Museum Mode (VR)" />
+				<ui:Button name="btn-quit" class="menu-button secondary" text="Quit" />
+			</ui:VisualElement>
+		</ui:VisualElement>
+	</ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,93 @@
+:root {
+	--bg: #2a0044;
+	--accent: #00ffff;
+	--accent-muted: #39c7ff;
+	--text: #e8e8ff;
+	--text-muted: #b8b8d0;
+	--card: rgba(255, 255, 255, 0.04);
+	--card-border: rgba(0, 255, 255, 0.2);
+}
+
+.main-root {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--bg);
+	height: 100%;
+	width: 100%;
+	padding: 32px;
+	gap: 16px;
+}
+
+.watermark {
+	position: absolute;
+	top: 12px;
+	left: 16px;
+	color: var(--accent-muted);
+	opacity: 0.5;
+	unity-font-style: bold;
+	font-size: 11px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+}
+
+.card {
+	min-width: 360px;
+	max-width: 520px;
+	padding: 28px;
+	border-radius: 12px;
+	background-color: var(--card);
+	border-width: 1px;
+	border-color: var(--card-border);
+	flex-direction: column;
+	align-items: stretch;
+	gap: 16px;
+}
+
+.title {
+	font-size: 28px;
+	unity-font-style: bold;
+	color: var(--text);
+	letter-spacing: 1px;
+}
+
+.subtitle {
+	font-size: 14px;
+	color: var(--text-muted);
+	letter-spacing: 0.5px;
+}
+
+.button-group {
+	flex-direction: column;
+	gap: 10px;
+}
+
+.menu-button {
+	height: 40px;
+	background-color: transparent;
+	border-color: var(--accent);
+	border-width: 1px;
+	border-radius: 8px;
+	color: var(--text);
+	unity-font-style: bold;
+	letter-spacing: 0.5px;
+	transition-property: background-color, color;
+	transition-duration: 0.1s;
+}
+
+.menu-button:hover {
+	background-color: rgba(0, 255, 255, 0.1);
+}
+
+.menu-button:active {
+	background-color: rgba(0, 255, 255, 0.2);
+}
+
+.menu-button.secondary {
+	border-color: var(--accent-muted);
+	color: var(--text-muted);
+}
+
+.menu-button.secondary:hover {
+	background-color: rgba(57, 199, 255, 0.08);
+}

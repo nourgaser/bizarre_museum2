@@ -47,6 +47,8 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 ## 🪵 Session Log
 
 - Unity 3D-URP project created; backend API client and tester scripts added for ping/create/get verification.
+- Main Menu UI Toolkit layout and styling added with scene navigation controller.
+- Fixed main menu USS to comply with UI Toolkit (border/transition shorthands removed).
 
 ## References
 
