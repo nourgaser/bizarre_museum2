@@ -1,4 +1,5 @@
 <!-- STATUS.md -->
+
 # 🏛️ PROJECT STATUS: Bizarre Museum
 
 **Session Goal:** 8-Hour Prototype | **Time Remaining:** ~8 Hours
@@ -12,9 +13,9 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 
 ### Phase 1: Backend & Connectivity (Hour 0 - 1.5)
 
-- [ ] **[Backend]** Initialize Express/Mongoose repo.
-- [ ] **[Backend]** Create `Item` and `Concoction` Schemas.
-- [ ] **[Backend]** Implement endpoints: `POST /concoctions`, `GET /concoctions/:code`.
+- [x] **[Backend]** Initialize Express/Mongoose repo.
+- [x] **[Backend]** Create `Item` and `Concoction` Schemas.
+- [x] **[Backend]** Implement endpoints: `POST /concoctions`, `GET /concoctions/:code`.
 - [ ] **[Unity]** Create URP Project (User Action).
 - [ ] **[Unity]** specific `APIClient.cs` to verify connection (Ping test).
 
