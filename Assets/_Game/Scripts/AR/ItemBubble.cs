@@ -218,10 +218,10 @@ public class ItemBubble : MonoBehaviour
             pos.y = floor;
             _innerInstance.transform.position = pos;
 
-            _innerRigidbody.velocity = Vector3.zero;
+            _innerRigidbody.linearVelocity = Vector3.zero;
             _innerRigidbody.angularVelocity = Vector3.zero;
-            _innerRigidbody.drag = groundedDrag;
-            _innerRigidbody.angularDrag = groundedDrag;
+            _innerRigidbody.linearDamping = groundedDrag;
+            _innerRigidbody.angularDamping = groundedDrag;
             _innerRigidbody.isKinematic = true;
         }
     }
