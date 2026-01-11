@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using System.Collections.Generic;
+using System.Linq;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
@@ -16,6 +18,8 @@ public class VRItemPickup : MonoBehaviour
 
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable _grab;
     private GameObject _visualInstance;
+    private readonly List<MonoBehaviour> _seededBehaviours = new List<MonoBehaviour>();
+    private bool _seededEnabled;
 
     private void Awake()
     {
@@ -46,7 +50,41 @@ public class VRItemPickup : MonoBehaviour
         _visualInstance = Instantiate(definition.innerPrefab, visualParent);
         _visualInstance.name = $"{definition.slug}-visual";
 
-        var seeded = _visualInstance.GetComponent<ISeededItem>();
-        seeded?.Configure(seed);
+        CacheSeededBehaviours();
+        ConfigureSeeded(seed);
+        SetSeededEnabled(false);
+    }
+
+    private void CacheSeededBehaviours()
+    {
+        _seededBehaviours.Clear();
+        var behaviours = _visualInstance.GetComponentsInChildren<MonoBehaviour>(true);
+        foreach (var mb in behaviours)
+        {
+            if (mb is ISeededItem)
+            {
+                _seededBehaviours.Add(mb);
+            }
+        }
+    }
+
+    private void ConfigureSeeded(float seedValue)
+    {
+        foreach (var mb in _seededBehaviours)
+        {
+            if (mb is ISeededItem seeded)
+            {
+                seeded.Configure(seedValue);
+            }
+        }
+    }
+
+    public void SetSeededEnabled(bool enable)
+    {
+        _seededEnabled = enable;
+        foreach (var mb in _seededBehaviours.Where(b => b != null))
+        {
+            mb.enabled = enable;
+        }
     }
 }

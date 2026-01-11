@@ -6,6 +6,7 @@ public class PedestalController : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform buttonTarget;
     [SerializeField] private UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socketInteractor;
+    [SerializeField] private PedestalButtonController button;
     [SerializeField] private bool logEvents = false;
 
     public Transform SpawnPoint => spawnPoint;
@@ -24,6 +25,12 @@ public class PedestalController : MonoBehaviour
             socketInteractor.hoverEntered.AddListener(OnHoverEntered);
             socketInteractor.hoverExited.AddListener(OnHoverExited);
         }
+
+        if (button != null)
+        {
+            button.Toggled += OnButtonToggled;
+            button.SetState(false, false);
+        }
     }
 
     private void OnDisable()
@@ -34,6 +41,11 @@ public class PedestalController : MonoBehaviour
             socketInteractor.selectExited.RemoveListener(OnSelectExited);
             socketInteractor.hoverEntered.RemoveListener(OnHoverEntered);
             socketInteractor.hoverExited.RemoveListener(OnHoverExited);
+        }
+
+        if (button != null)
+        {
+            button.Toggled -= OnButtonToggled;
         }
     }
 
@@ -46,12 +58,19 @@ public class PedestalController : MonoBehaviour
         }
 
         ApplyFloatingBob();
+
+        if (button != null)
+        {
+            button.SetState(false, false);
+        }
     }
 
     private void OnSelectExited(SelectExitEventArgs args)
     {
-        if (args.interactableObject.transform.GetComponent<VRItemPickup>() == CurrentPickup)
+        var pickup = args.interactableObject.transform.GetComponent<VRItemPickup>();
+        if (pickup == CurrentPickup)
         {
+            CurrentPickup.SetSeededEnabled(false);
             CurrentPickup = null;
         }
 
@@ -61,6 +80,11 @@ public class PedestalController : MonoBehaviour
         }
 
         RemoveFloatingBob();
+
+        if (button != null)
+        {
+            button.SetState(false, true);
+        }
     }
 
     private void OnHoverEntered(HoverEnterEventArgs args)
@@ -76,6 +100,14 @@ public class PedestalController : MonoBehaviour
         if (logEvents)
         {
             Debug.Log("Pedestal socket hover exit");
+        }
+    }
+
+    private void OnButtonToggled(bool isOn)
+    {
+        if (CurrentPickup != null)
+        {
+            CurrentPickup.SetSeededEnabled(isOn);
         }
     }
 
