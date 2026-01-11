@@ -32,6 +32,7 @@ public class PedestalButtonController : MonoBehaviour
             _interactable.selectEntered.AddListener(OnSelectEntered);
         }
 
+        startOn = false;
         SetState(startOn, false);
     }
 

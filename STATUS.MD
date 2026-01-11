@@ -63,6 +63,7 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 - HUD responsive tweak: wraps inventory/actions for mobile, shrinks padding, and hides code card until a code is generated.
 - VR scene shell assembled (wall segments, pedestals with lid/button/slot, terminal placeholder, XR Device Simulator added); Terminal UI Toolkit scaffold added (code entry/status, themed USS).
 - VR terminal controller + museum manager + pedestal/socket flow added: terminal fetches concoctions, spawns grabbable item pickups on the floor, pedestals use XR Socket Interactors to accept/remove items; pedestal button now toggles seeded item enable state and adds/removes floating bob while slotted.
+- Seeded item effects now default to OFF: pedestal buttons start off when empty, and particle/audio effects respect the toggle (stopped when disabled).
 
 ## References
 

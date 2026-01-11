@@ -19,6 +19,8 @@ public class VRItemPickup : MonoBehaviour
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable _grab;
     private GameObject _visualInstance;
     private readonly List<MonoBehaviour> _seededBehaviours = new List<MonoBehaviour>();
+    private readonly List<ParticleSystem> _particleSystems = new List<ParticleSystem>();
+    private readonly List<AudioSource> _audioSources = new List<AudioSource>();
     private bool _seededEnabled;
 
     private void Awake()
@@ -51,6 +53,7 @@ public class VRItemPickup : MonoBehaviour
         _visualInstance.name = $"{definition.slug}-visual";
 
         CacheSeededBehaviours();
+        CacheEffectComponents();
         ConfigureSeeded(seed);
         SetSeededEnabled(false);
     }
@@ -66,6 +69,15 @@ public class VRItemPickup : MonoBehaviour
                 _seededBehaviours.Add(mb);
             }
         }
+    }
+
+    private void CacheEffectComponents()
+    {
+        _particleSystems.Clear();
+        _audioSources.Clear();
+
+        _visualInstance.GetComponentsInChildren(true, _particleSystems);
+        _visualInstance.GetComponentsInChildren(true, _audioSources);
     }
 
     private void ConfigureSeeded(float seedValue)
@@ -85,6 +97,50 @@ public class VRItemPickup : MonoBehaviour
         foreach (var mb in _seededBehaviours.Where(b => b != null))
         {
             mb.enabled = enable;
+        }
+
+        ApplyParticles(enable);
+        ApplyAudio(enable);
+    }
+
+    private void ApplyParticles(bool enable)
+    {
+        foreach (var ps in _particleSystems.Where(p => p != null))
+        {
+            var emission = ps.emission;
+            emission.enabled = enable;
+
+            if (enable)
+            {
+                if (!ps.isPlaying)
+                {
+                    ps.Play();
+                }
+            }
+            else
+            {
+                ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+    }
+
+    private void ApplyAudio(bool enable)
+    {
+        foreach (var src in _audioSources.Where(a => a != null))
+        {
+            src.mute = !enable;
+
+            if (enable)
+            {
+                if (!src.isPlaying)
+                {
+                    src.Play();
+                }
+            }
+            else
+            {
+                src.Stop();
+            }
         }
     }
 }
