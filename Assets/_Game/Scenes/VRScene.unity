@@ -212,6 +212,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7544936332927378825, guid: ad5ca7ef542af71d186cfe6d25a37cfd, type: 3}
   m_PrefabInstance: {fileID: 365116695}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &365116697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1262237729031306817, guid: ad5ca7ef542af71d186cfe6d25a37cfd, type: 3}
+  m_PrefabInstance: {fileID: 365116695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46c2217bb8f5ebeb94633f3201c75b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestalController
 --- !u!1001 &379050382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,6 +285,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7544936332927378825, guid: ad5ca7ef542af71d186cfe6d25a37cfd, type: 3}
   m_PrefabInstance: {fileID: 379050382}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &379050384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1262237729031306817, guid: ad5ca7ef542af71d186cfe6d25a37cfd, type: 3}
+  m_PrefabInstance: {fileID: 379050382}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46c2217bb8f5ebeb94633f3201c75b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestalController
 --- !u!1 &390843837
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +535,51 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1115029809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115029811}
+  - component: {fileID: 1115029810}
+  m_Layer: 0
+  m_Name: ApiClient
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1115029810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115029809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23e3992145ea5efe903568bd57b6fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiClient
+  backendBaseUrl: http://localhost:3000
+--- !u!4 &1115029811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115029809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -46.53454, y: -17.66657, z: 8.34804}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1389219992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -575,6 +642,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7544936332927378825, guid: ad5ca7ef542af71d186cfe6d25a37cfd, type: 3}
   m_PrefabInstance: {fileID: 1389219992}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1389219997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1262237729031306817, guid: ad5ca7ef542af71d186cfe6d25a37cfd, type: 3}
+  m_PrefabInstance: {fileID: 1389219992}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46c2217bb8f5ebeb94633f3201c75b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestalController
+--- !u!1 &1614535968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614535970}
+  - component: {fileID: 1614535969}
+  m_Layer: 0
+  m_Name: VRMuseumManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1614535969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614535968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b1fcd86a45a6f88a660793170ee16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRMuseumManager
+  terminal: {fileID: 1636423945}
+  pedestals:
+  - {fileID: 1389219997}
+  - {fileID: 379050384}
+  - {fileID: 365116697}
+  dropSpawns: []
+  pickupPrefab: {fileID: 3807609956754818333, guid: d8dcfaaa5516afab79bf07c9def42583, type: 3}
+  itemDefinitions:
+  - {fileID: 11400000, guid: 74bd055d2a25f7206829c5442d056f37, type: 2}
+  - {fileID: 11400000, guid: 3f72d1a76685556ffb5ef315cfec2eca, type: 2}
+  - {fileID: 11400000, guid: afff4fba7aa4e192bb1f3a993499dbd1, type: 2}
+  - {fileID: 11400000, guid: a96f5e6bacb70204bb245d0b884c3800, type: 2}
+  - {fileID: 11400000, guid: aae6c9801c9409433a8dd180a5dc357b, type: 2}
+--- !u!4 &1614535970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614535968}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.16349, y: 0.1, z: -2.55717}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1636423940
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +722,7 @@ GameObject:
   - component: {fileID: 1636423943}
   - component: {fileID: 1636423942}
   - component: {fileID: 1636423941}
+  - component: {fileID: 1636423945}
   m_Layer: 0
   m_Name: Terminal
   m_TagString: Untagged
@@ -680,7 +816,7 @@ Transform:
   m_GameObject: {fileID: 1636423940}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25881895, y: -0, z: -0, w: 0.9659259}
-  m_LocalPosition: {x: 0, y: 0.9, z: -7}
+  m_LocalPosition: {x: 0, y: 0.9, z: 2.48}
   m_LocalScale: {x: 1.6, y: 1, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -688,6 +824,20 @@ Transform:
   - {fileID: 148145935}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &1636423945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636423940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9355e65ec43953e9654808d69fa689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRTerminalController
+  focusCodeFieldOnStart: 1
+  _doc: {fileID: 390843839}
 --- !u!1 &1652854555
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +863,7 @@ Transform:
   m_GameObject: {fileID: 1652854555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 9.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -893,3 +1043,5 @@ SceneRoots:
   - {fileID: 1652854556}
   - {fileID: 1636423944}
   - {fileID: 1739379368}
+  - {fileID: 1614535970}
+  - {fileID: 1115029811}
