@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ARGameManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ARHUDController hud;
+    [SerializeField] private string vrSceneName = "VRScene";
 
     [Header("Debug Collection (Editor)")]
     [SerializeField] private string[] debugItems =
@@ -30,9 +32,11 @@ public class ARGameManager : MonoBehaviour
         }
 
         hud.UploadRequested += OnUploadRequested;
+        hud.GoToVRRequested += OnGoToVRRequested;
         hud.SetUploadEnabled(false, "Collect 3 items to enable.");
         hud.SetStatus("Initializing");
         hud.SetNetwork(false);
+        hud.SetVRNavigationEnabled(false, "Generate a code first.");
         SyncSlots();
 
         await ProbeBackend();
@@ -43,6 +47,7 @@ public class ARGameManager : MonoBehaviour
         if (hud != null)
         {
             hud.UploadRequested -= OnUploadRequested;
+            hud.GoToVRRequested -= OnGoToVRRequested;
         }
     }
 
@@ -158,6 +163,19 @@ public class ARGameManager : MonoBehaviour
         }
 
         hud?.SetStatus($"Code: {resp.code}");
+        hud?.SetCode(resp.code);
+        hud?.SetVRNavigationEnabled(true, "Jump to VR to place it.");
+    }
+
+    private void OnGoToVRRequested()
+    {
+        if (string.IsNullOrWhiteSpace(vrSceneName))
+        {
+            hud?.SetStatus("VR scene not configured");
+            return;
+        }
+
+        SceneManager.LoadScene(vrSceneName);
     }
 
     private async Task ProbeBackend()

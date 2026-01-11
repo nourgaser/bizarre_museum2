@@ -33,6 +33,13 @@
       <ui:Label class="hint" name="hint-upload" text="Collect 3 items to enable." />
     </ui:VisualElement>
 
+    <ui:VisualElement class="code-card" name="code-card">
+      <ui:Label class="code-title" text="Your Code" />
+      <ui:Label class="code-value" name="code-value" text="------" />
+      <ui:Label class="code-sub" name="code-sub" text="Generate a concoction to get a code." />
+      <ui:Button class="secondary" name="btn-to-vr" text="Go to VR Room" />
+    </ui:VisualElement>
+
     <ui:Label class="status-label" name="status-label" text="Status: Idle" />
   </ui:VisualElement>
 </ui:UXML>
