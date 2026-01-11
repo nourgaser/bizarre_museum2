@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ca46855a46590648452af029a32f95, type: 3}
+  m_Name: ItemDefinition
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDefinition
+  slug: chromatic-shifter
+  displayName: Chromatic Shifter
+  hintColor: {r: 1, g: 0.5844725, b: 0, a: 0.35}
+  innerPrefab: {fileID: 7171775143435085115, guid: e214adb420b958568abb17abb6eba24f, type: 3}

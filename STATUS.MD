@@ -52,6 +52,8 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 - AR HUD UI Toolkit skeleton added (watermark, network indicator, inventory slots, upload button) with controller stub.
 - AR GameManager stub added: HUD wiring, backend ping, debug collection (keys 1-3), and upload via ApiClient.
 - AR GameManager debug input updated to support new Input System key polling.
+- AR bubble prefab scripts added (FloatingBob for drift, ItemBubble for pop-and-drop behavior with hint color).
+- Item system scaffolding added: ScriptableObject definitions, seeded item interface, and per-item behavior stubs (gravity, hum, chromatic, gaze, particles) for InnerItem prefabs.
 
 ## References
 
