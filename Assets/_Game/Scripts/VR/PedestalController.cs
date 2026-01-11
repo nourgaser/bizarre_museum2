@@ -13,6 +13,8 @@ public class PedestalController : MonoBehaviour
     public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor Socket => socketInteractor;
     public VRItemPickup CurrentPickup { get; private set; }
 
+    private FloatingBob _floatingBob;
+
     private void OnEnable()
     {
         if (socketInteractor != null)
@@ -42,6 +44,8 @@ public class PedestalController : MonoBehaviour
         {
             Debug.Log($"Pedestal socket selected {CurrentPickup?.name ?? "(null)"}");
         }
+
+        ApplyFloatingBob();
     }
 
     private void OnSelectExited(SelectExitEventArgs args)
@@ -55,6 +59,8 @@ public class PedestalController : MonoBehaviour
         {
             Debug.Log("Pedestal socket deselected item.");
         }
+
+        RemoveFloatingBob();
     }
 
     private void OnHoverEntered(HoverEnterEventArgs args)
@@ -70,6 +76,28 @@ public class PedestalController : MonoBehaviour
         if (logEvents)
         {
             Debug.Log("Pedestal socket hover exit");
+        }
+    }
+
+    private void ApplyFloatingBob()
+    {
+        RemoveFloatingBob();
+
+        if (CurrentPickup == null) return;
+
+        _floatingBob = CurrentPickup.gameObject.AddComponent<FloatingBob>();
+        _floatingBob.SetAmplitude(0.1f);
+        _floatingBob.SetFrequency(0.8f);
+        _floatingBob.SetAxis(new Vector3(0.1f, 1f, 0.1f));
+        _floatingBob.SetAxisRandomness(new Vector3(0.1f, 0.1f, 0.1f));
+    }
+
+    private void RemoveFloatingBob()
+    {
+        if (_floatingBob != null)
+        {
+            Destroy(_floatingBob);
+            _floatingBob = null;
         }
     }
 

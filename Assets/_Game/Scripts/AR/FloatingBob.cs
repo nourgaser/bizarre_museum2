@@ -34,4 +34,24 @@ public class FloatingBob : MonoBehaviour
             transform.localPosition += randomOffset;
         }
     }
+
+    public void SetAmplitude(float value)
+    {
+        amplitude = value;
+    }
+
+    public void SetFrequency(float value)
+    {
+        frequency = value;
+    }
+
+    public void SetAxis(Vector3 value)
+    {
+        axis = value;
+    }
+
+    public void SetAxisRandomness(Vector3 value)
+    {
+        axisRandomness = value;
+    }
 }
