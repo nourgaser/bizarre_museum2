@@ -124,5 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb830fc181acfa8cd9c0811b5f156f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeDistorterItem
-  maxStrength: 0.6
+  volume: {fileID: 0}
+  maxStrength: 2
   rampTime: 1.5
+  triggerAngleDegrees: 20
