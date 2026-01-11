@@ -54,9 +54,9 @@ public class ARGameManager : MonoBehaviour
         if (WasKeyPressed(3)) CollectDebug(2);
     }
 
-    public void CollectBubble(ItemBubble bubble)
+    public void CollectBubblePickup(ItemBubble bubble)
     {
-        if (bubble == null || bubble.IsPopped)
+        if (bubble == null || bubble.IsCollected)
         {
             return;
         }
@@ -67,10 +67,15 @@ public class ARGameManager : MonoBehaviour
             return;
         }
 
-        bubble.TryPop();
+        if (!bubble.IsPopped)
+        {
+            bubble.TryPop();
+        }
 
         var slug = bubble.Slug;
         var seed = bubble.Seed;
+
+        bubble.MarkCollected();
 
         _slots.Add(new Slot(slug, seed));
         hud?.SetStatus($"Collected {slug}");

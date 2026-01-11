@@ -8,11 +8,15 @@ public class ItemBubbleCollector : MonoBehaviour
 
     [Header("Interaction")]
     [SerializeField] private LayerMask bubbleLayerMask = ~0;
+    [SerializeField] private LayerMask groundLayerMask = ~0;
     [SerializeField] private float rayDistance = 6f;
     [SerializeField] private float groundOffset = 1.0f;
     [SerializeField] private bool highlightTargets = true;
+    [SerializeField] private float pickupRadius = 0.6f;
+    [SerializeField] private float groundRayLength = 10f;
 
     private ItemBubble _highlighted;
+    private readonly System.Collections.Generic.List<ItemBubble> _pending = new();
 
     private void Awake()
     {
@@ -30,10 +34,11 @@ public class ItemBubbleCollector : MonoBehaviour
     private void Update()
     {
         UpdateHighlight();
+        UpdatePickupProximity();
 
         if (WasClickOrTap())
         {
-            TryCollect();
+            TryPop();
         }
     }
 
@@ -51,7 +56,7 @@ public class ItemBubbleCollector : MonoBehaviour
         return false;
     }
 
-    private void TryCollect()
+    private void TryPop()
     {
         if (cameraTransform == null || gameManager == null)
         {
@@ -64,10 +69,24 @@ public class ItemBubbleCollector : MonoBehaviour
             var bubble = hit.collider.GetComponentInParent<ItemBubble>();
             if (bubble != null && !bubble.IsPopped)
             {
-                float groundHeight = cameraTransform.position.y - groundOffset;
+                float groundHeight = ResolveGroundHeight(bubble.transform.position);
                 bubble.SetGroundHeight(groundHeight);
-                gameManager.CollectBubble(bubble);
+                bubble.TryPop();
+                EnqueuePending(bubble);
             }
+        }
+    }
+
+    private void EnqueuePending(ItemBubble bubble)
+    {
+        if (bubble == null)
+        {
+            return;
+        }
+
+        if (!_pending.Contains(bubble))
+        {
+            _pending.Add(bubble);
         }
     }
 
@@ -116,5 +135,45 @@ public class ItemBubbleCollector : MonoBehaviour
     private void OnDisable()
     {
         SetHighlighted(null);
+    }
+
+    private float ResolveGroundHeight(Vector3 origin)
+    {
+        if (Physics.Raycast(origin + Vector3.up * 0.25f, Vector3.down, out var hit, groundRayLength, groundLayerMask, QueryTriggerInteraction.Ignore))
+        {
+            return hit.point.y;
+        }
+
+        return cameraTransform != null ? cameraTransform.position.y - groundOffset : origin.y - groundOffset;
+    }
+
+    private void UpdatePickupProximity()
+    {
+        if (gameManager == null || cameraTransform == null)
+        {
+            return;
+        }
+
+        for (int i = _pending.Count - 1; i >= 0; i--)
+        {
+            var bubble = _pending[i];
+            if (bubble == null || bubble.IsCollected)
+            {
+                _pending.RemoveAt(i);
+                continue;
+            }
+
+            if (!bubble.IsReadyForPickup)
+            {
+                continue;
+            }
+
+            float dist = Vector3.Distance(cameraTransform.position, bubble.InnerPosition);
+            if (dist <= pickupRadius)
+            {
+                gameManager.CollectBubblePickup(bubble);
+                _pending.RemoveAt(i);
+            }
+        }
     }
 }

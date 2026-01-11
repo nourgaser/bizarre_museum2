@@ -58,7 +58,7 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 - AR bubble spawner scaffold added (maintains target bubble count around camera with item definitions).
 - AR bubble spawner now spawns over time (interval-based), cleans popped bubbles, and gives visual/audio spawn feedback; bubbles accept definitions via SetDefinition.
 - Interaction loop added: click/tap raycasts pop bubbles, adds slot with slug+seed to HUD/inventory.
-- UX polish: aiming highlight shows in-range bubble (tint + subtle scale), and popped inner items clamp to a virtual floor to avoid falling forever.
+ - UX polish: aiming highlight shows in-range bubble (tint + subtle scale); popped items fall with physics, rest on a virtual/real floor via raycast, and are collected only when the player approaches.
 
 ## References
 

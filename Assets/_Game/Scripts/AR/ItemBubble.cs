@@ -27,6 +27,7 @@ public class ItemBubble : MonoBehaviour
 
     private bool _popped;
     private bool _initialized;
+    private bool _collected;
     private float _seed = -1f;
     private bool _highlighted;
     private bool _hasGroundHeight;
@@ -137,6 +138,9 @@ public class ItemBubble : MonoBehaviour
 
     public string Slug => itemDefinition != null ? itemDefinition.slug : "unknown";
     public bool IsPopped => _popped;
+    public bool IsCollected => _collected;
+    public bool IsReadyForPickup => _popped && !_collected;
+    public Vector3 InnerPosition => _innerInstance != null ? _innerInstance.transform.position : transform.position;
 
     public float Seed => _seed;
 
@@ -222,7 +226,24 @@ public class ItemBubble : MonoBehaviour
             _innerRigidbody.angularVelocity = Vector3.zero;
             _innerRigidbody.linearDamping = groundedDrag;
             _innerRigidbody.angularDamping = groundedDrag;
-            _innerRigidbody.isKinematic = true;
+            _innerRigidbody.useGravity = false;
+            _innerRigidbody.Sleep();
+        }
+    }
+
+    public void MarkCollected()
+    {
+        if (_collected)
+        {
+            return;
+        }
+
+        _collected = true;
+        _highlighted = false;
+
+        if (_innerInstance != null)
+        {
+            _innerInstance.SetActive(false);
         }
     }
 }
