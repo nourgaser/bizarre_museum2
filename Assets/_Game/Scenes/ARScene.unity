@@ -161,7 +161,8 @@ MonoBehaviour:
   spawnRadius: 3.5
   minDistanceFromCamera: 1.5
   spawnHeightOffset: 0.5
-  spawnInterval: 7
+  spawnHeightJitter: 0.35
+  spawnIntervalRange: {x: 5, y: 15}
   initialDelay: 5
   sfxSource: {fileID: 2553022}
   spawnClip: {fileID: 8300000, guid: 8c8b04b09c56a0726b4aab7480386455, type: 3}

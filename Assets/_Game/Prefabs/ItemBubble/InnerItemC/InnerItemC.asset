@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemDefinition
   slug: chromatic-shifter
   displayName: Chromatic Shifter
-  hintColor: {r: 1, g: 0.5844725, b: 0, a: 0.35}
+  hintColor: {r: 0.8443396, g: 1, b: 0.9821592, a: 0.35}
   innerPrefab: {fileID: 7171775143435085115, guid: e214adb420b958568abb17abb6eba24f, type: 3}

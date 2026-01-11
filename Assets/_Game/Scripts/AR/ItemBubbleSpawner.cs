@@ -13,8 +13,9 @@ public class ItemBubbleSpawner : MonoBehaviour
     [SerializeField] private int targetBubbles = 5;
     [SerializeField] private float spawnRadius = 3.5f;
     [SerializeField] private float minDistanceFromCamera = 1.5f;
-    [SerializeField] private float spawnHeightOffset = 0.5f;
-    [SerializeField] private float spawnInterval = 1.5f;
+    [SerializeField] private float spawnHeightOffset = -0.25f;
+    [SerializeField] private float spawnHeightJitter = 0.35f;
+    [SerializeField] private Vector2 spawnIntervalRange = new Vector2(1f, 2.5f);
     [SerializeField] private float initialDelay = 0.5f;
 
     [Header("Feedback")]
@@ -63,7 +64,7 @@ public class ItemBubbleSpawner : MonoBehaviour
                 SpawnOne();
             }
 
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(GetNextInterval());
         }
     }
 
@@ -98,8 +99,18 @@ public class ItemBubbleSpawner : MonoBehaviour
         Vector2 circle = Random.insideUnitCircle * spawnRadius;
         Vector3 offset = (forward * minDistanceFromCamera) + new Vector3(circle.x, 0f, circle.y);
         Vector3 pos = origin + offset;
-        pos.y = origin.y + spawnHeightOffset;
+        float jitter = Random.Range(-spawnHeightJitter, spawnHeightJitter);
+        pos.y = origin.y + spawnHeightOffset + jitter;
         return pos;
+    }
+
+    private float GetNextInterval()
+    {
+        if (spawnIntervalRange.y < spawnIntervalRange.x)
+        {
+            spawnIntervalRange.y = spawnIntervalRange.x;
+        }
+        return Random.Range(spawnIntervalRange.x, spawnIntervalRange.y);
     }
 
     private IEnumerator SpawnPulse(Transform t)
