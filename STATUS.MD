@@ -55,6 +55,8 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 - AR bubble prefab scripts added (FloatingBob for drift, ItemBubble for pop-and-drop behavior with hint color).
 - Item system scaffolding added: ScriptableObject definitions, seeded item interface, and per-item behavior stubs (gravity, hum, chromatic, gaze, particles) for InnerItem prefabs.
 - Item behaviors refined: gravity now pushes in random direction with layer mask; hum volume attenuates by camera distance; gaze uses URP Lens Distortion and only triggers when looked at, centered on item.
+- AR bubble spawner scaffold added (maintains target bubble count around camera with item definitions).
+- AR bubble spawner now spawns over time (interval-based), cleans popped bubbles, and gives visual/audio spawn feedback; bubbles accept definitions via SetDefinition.
 
 ## References
 

@@ -15,12 +15,23 @@ public class ItemBubble : MonoBehaviour
     [SerializeField] private float popTorque = 0.2f;
 
     private bool _popped;
+    private bool _initialized;
     private Rigidbody _innerRigidbody;
     private GameObject _innerInstance;
 
-    private void Awake()
+    private void Start()
     {
-        if (itemDefinition != null && bubbleRenderer != null)
+        InitializeIfNeeded();
+    }
+
+    private void InitializeIfNeeded()
+    {
+        if (_initialized || itemDefinition == null)
+        {
+            return;
+        }
+
+        if (bubbleRenderer != null)
         {
             var mat = bubbleRenderer.material;
             if (mat != null)
@@ -35,6 +46,8 @@ public class ItemBubble : MonoBehaviour
             _innerRigidbody.isKinematic = true;
             _innerRigidbody.useGravity = false;
         }
+
+        _initialized = true;
     }
 
     private void SpawnInner()
@@ -100,4 +113,11 @@ public class ItemBubble : MonoBehaviour
 
     public string Slug => itemDefinition != null ? itemDefinition.slug : "unknown";
     public bool IsPopped => _popped;
+
+    public void SetDefinition(ItemDefinition def)
+    {
+        itemDefinition = def;
+        _initialized = false;
+        InitializeIfNeeded();
+    }
 }
