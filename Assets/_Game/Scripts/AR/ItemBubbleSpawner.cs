@@ -85,7 +85,8 @@ public class ItemBubbleSpawner : MonoBehaviour
         var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity, transform);
         bubble.name = $"Bubble_{def.slug}";
 
-        bubble.SetDefinition(def);
+        float seed = Random.value;
+        bubble.SetDefinition(def, seed);
 
         _active.Add(bubble);
         StartCoroutine(SpawnPulse(bubble.transform));

@@ -908,6 +908,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7965411189669191602, guid: 699e06e68debe347f89a347d697544c6, type: 3}
   m_PrefabInstance: {fileID: 807384464}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &896359842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 896359844}
+  - component: {fileID: 896359843}
+  m_Layer: 0
+  m_Name: BubbleCollector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &896359843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896359842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e34026d8b6d06465b05b7ebbe9bfaa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemBubbleCollector
+  gameManager: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  bubbleLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  rayDistance: 6
+--- !u!4 &896359844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896359842}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.12249, y: -10.52882, z: 14.08027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &941194364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1507,3 +1557,4 @@ SceneRoots:
   - {fileID: 1519803134}
   - {fileID: 608017235}
   - {fileID: 2553021}
+  - {fileID: 896359844}

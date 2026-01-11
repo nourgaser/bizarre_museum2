@@ -14,14 +14,37 @@ public class ItemBubble : MonoBehaviour
     [SerializeField] private float popForce = 0.8f;
     [SerializeField] private float popTorque = 0.2f;
 
+    [Header("Highlight")]
+    [SerializeField] private Color highlightColor = Color.cyan;
+    [SerializeField, Range(0f, 1f)] private float highlightTintStrength = 0.35f;
+    [SerializeField] private float highlightScale = 1.08f;
+    [SerializeField] private float highlightLerp = 12f;
+
+    [Header("Grounding")]
+    [SerializeField] private bool enableGrounding = true;
+    [SerializeField] private float groundSnapOffset = 0.02f;
+    [SerializeField] private float groundedDrag = 5f;
+
     private bool _popped;
     private bool _initialized;
+    private float _seed = -1f;
+    private bool _highlighted;
+    private bool _hasGroundHeight;
+    private float _groundHeight;
     private Rigidbody _innerRigidbody;
     private GameObject _innerInstance;
+    private MaterialPropertyBlock _mpb;
+    private Vector3 _baseScale;
 
     private void Start()
     {
         InitializeIfNeeded();
+    }
+
+    private void LateUpdate()
+    {
+        UpdateHighlightVisual();
+        HandleGrounding();
     }
 
     private void InitializeIfNeeded()
@@ -31,14 +54,14 @@ public class ItemBubble : MonoBehaviour
             return;
         }
 
-        if (bubbleRenderer != null)
+        if (_seed < 0f)
         {
-            var mat = bubbleRenderer.material;
-            if (mat != null)
-            {
-                mat.color = itemDefinition.hintColor;
-            }
+            _seed = Random.value;
         }
+
+        _baseScale = transform.localScale;
+
+        ApplyTint(itemDefinition.hintColor, false);
 
         SpawnInner();
         if (_innerRigidbody != null)
@@ -71,8 +94,7 @@ public class ItemBubble : MonoBehaviour
         var seeded = _innerInstance.GetComponent<ISeededItem>();
         if (seeded != null)
         {
-            var seed = Random.value;
-            seeded.Configure(seed);
+            seeded.Configure(_seed);
         }
 
         _innerInstance.SetActive(true);
@@ -109,15 +131,98 @@ public class ItemBubble : MonoBehaviour
             _innerRigidbody.AddForce(Vector3.down * popForce, ForceMode.Impulse);
             _innerRigidbody.AddTorque(Random.insideUnitSphere * popTorque, ForceMode.Impulse);
         }
+
+        SetHighlighted(false);
     }
 
     public string Slug => itemDefinition != null ? itemDefinition.slug : "unknown";
     public bool IsPopped => _popped;
 
+    public float Seed => _seed;
+
     public void SetDefinition(ItemDefinition def)
     {
+        SetDefinition(def, Random.value);
+    }
+
+    public void SetDefinition(ItemDefinition def, float seed)
+    {
         itemDefinition = def;
+        _seed = seed;
         _initialized = false;
         InitializeIfNeeded();
+    }
+
+    public void SetHighlighted(bool value)
+    {
+        _highlighted = value && !_popped;
+    }
+
+    public void SetGroundHeight(float height)
+    {
+        _groundHeight = height;
+        _hasGroundHeight = true;
+    }
+
+    private void UpdateHighlightVisual()
+    {
+        if (!_initialized)
+        {
+            return;
+        }
+
+        float targetScale = _highlighted ? highlightScale : 1f;
+        transform.localScale = Vector3.Lerp(transform.localScale, _baseScale * targetScale, Time.deltaTime * highlightLerp);
+
+        if (bubbleRenderer == null)
+        {
+            return;
+        }
+
+        Color baseColor = itemDefinition != null ? itemDefinition.hintColor : Color.white;
+        Color mixed = _highlighted ? Color.Lerp(baseColor, highlightColor, highlightTintStrength) : baseColor;
+        ApplyTint(mixed, _highlighted);
+    }
+
+    private void ApplyTint(Color color, bool emissive)
+    {
+        if (bubbleRenderer == null)
+        {
+            return;
+        }
+
+        _mpb ??= new MaterialPropertyBlock();
+        bubbleRenderer.GetPropertyBlock(_mpb);
+        _mpb.SetColor("_BaseColor", color);
+        _mpb.SetColor("_Color", color);
+
+        if (emissive)
+        {
+            _mpb.SetColor("_EmissionColor", color * 1.5f);
+        }
+
+        bubbleRenderer.SetPropertyBlock(_mpb);
+    }
+
+    private void HandleGrounding()
+    {
+        if (!_popped || !_hasGroundHeight || !enableGrounding || _innerInstance == null || _innerRigidbody == null)
+        {
+            return;
+        }
+
+        float floor = _groundHeight + groundSnapOffset;
+        if (_innerInstance.transform.position.y <= floor)
+        {
+            var pos = _innerInstance.transform.position;
+            pos.y = floor;
+            _innerInstance.transform.position = pos;
+
+            _innerRigidbody.velocity = Vector3.zero;
+            _innerRigidbody.angularVelocity = Vector3.zero;
+            _innerRigidbody.drag = groundedDrag;
+            _innerRigidbody.angularDrag = groundedDrag;
+            _innerRigidbody.isKinematic = true;
+        }
     }
 }

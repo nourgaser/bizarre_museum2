@@ -54,6 +54,29 @@ public class ARGameManager : MonoBehaviour
         if (WasKeyPressed(3)) CollectDebug(2);
     }
 
+    public void CollectBubble(ItemBubble bubble)
+    {
+        if (bubble == null || bubble.IsPopped)
+        {
+            return;
+        }
+
+        if (_slots.Count >= 3)
+        {
+            hud?.SetStatus("Inventory full (3)");
+            return;
+        }
+
+        bubble.TryPop();
+
+        var slug = bubble.Slug;
+        var seed = bubble.Seed;
+
+        _slots.Add(new Slot(slug, seed));
+        hud?.SetStatus($"Collected {slug}");
+        SyncSlots();
+    }
+
     private static bool WasKeyPressed(int digit)
     {
         switch (digit)
