@@ -1,0 +1,80 @@
+.terminal-root {
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	padding: 12px;
+	gap: 8px;
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.watermark {
+	position: absolute;
+	top: 6px;
+	left: 8px;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 11px;
+	letter-spacing: 0.5px;
+}
+
+.panel {
+	flex-direction: column;
+	gap: 8px;
+	background-color: rgba(42, 0, 68, 0.9);
+	border-color: #00ffff;
+	border-width: 1px;
+	border-radius: 8px;
+	padding: 12px 14px 14px 14px;
+	max-width: 320px;
+	align-self: flex-start;
+	unity-font-style: normal;
+}
+
+.title {
+	color: #ffffff;
+	font-size: 18px;
+	unity-font-style: bold;
+	letter-spacing: 0.5px;
+}
+
+.subtitle {
+	color: rgba(255, 255, 255, 0.75);
+	font-size: 12px;
+	margin-bottom: 4px;
+}
+
+.code-field {
+	color: #00ffff;
+}
+
+.code-field .unity-text-field__input {
+	color: #00ffff;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-color: rgba(0, 255, 255, 0.5);
+}
+
+.submit-button {
+	height: 36px;
+	background-color: #00ffff;
+	color: #2a0044;
+	unity-font-style: bold;
+	letter-spacing: 0.5px;
+	border-radius: 6px;
+}
+
+.submit-button:hover {
+	background-color: #33ffff;
+}
+
+.submit-button:disabled {
+	background-color: rgba(0, 255, 255, 0.35);
+	color: rgba(42, 0, 68, 0.65);
+}
+
+.status-label {
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 12px;
+	margin-top: 2px;
+	min-height: 16px;
+}

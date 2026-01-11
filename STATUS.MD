@@ -61,6 +61,7 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 - UX polish: aiming highlight shows in-range bubble (tint + subtle scale); popped items fall with physics, rest on a virtual/real floor via raycast, and are collected only when the player approaches.
 - HUD polish: displays generated code, enables Go-to-VR button after upload, and styles code card for visibility.
 - HUD responsive tweak: wraps inventory/actions for mobile, shrinks padding, and hides code card until a code is generated.
+- VR scene shell assembled (wall segments, pedestals with lid/button/slot, terminal placeholder, XR Device Simulator added); Terminal UI Toolkit scaffold added (code entry/status, themed USS).
 
 ## References
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+>
+    <ui:Style src="Terminal.uss" />
+
+    <ui:VisualElement class="terminal-root">
+        <ui:Label class="watermark" text="BIZARRE MUSEUM // PROTO [VR]" />
+
+        <ui:VisualElement class="panel">
+            <ui:Label class="title" text="Museum Terminal" />
+            <ui:Label class="subtitle" text="Enter access code to spawn items" />
+
+            <ui:TextField name="codeField" class="code-field" label="Code" />
+
+            <ui:Button name="submitButton" class="submit-button" text="Load Artifacts" />
+
+            <ui:Label name="statusLabel" class="status-label" text="Waiting for code..." />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
