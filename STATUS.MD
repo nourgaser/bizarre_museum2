@@ -64,6 +64,7 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 - VR scene shell assembled (wall segments, pedestals with lid/button/slot, terminal placeholder, XR Device Simulator added); Terminal UI Toolkit scaffold added (code entry/status, themed USS).
 - VR terminal controller + museum manager + pedestal/socket flow added: terminal fetches concoctions, spawns grabbable item pickups on the floor, pedestals use XR Socket Interactors to accept/remove items; pedestal button now toggles seeded item enable state and adds/removes floating bob while slotted.
 - Seeded item effects now default to OFF: pedestal buttons start off when empty, and particle/audio effects respect the toggle (stopped when disabled).
+- Floating bob now animates the visual child instead of the socketed root, so bobbing remains visible while locked into the pedestal socket.
 
 ## References
 

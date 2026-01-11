@@ -23,6 +23,8 @@ public class VRItemPickup : MonoBehaviour
     private readonly List<AudioSource> _audioSources = new List<AudioSource>();
     private bool _seededEnabled;
 
+    public Transform VisualRoot => _visualInstance != null ? _visualInstance.transform : null;
+
     private void Awake()
     {
         _grab = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();

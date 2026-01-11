@@ -117,7 +117,9 @@ public class PedestalController : MonoBehaviour
 
         if (CurrentPickup == null) return;
 
-        _floatingBob = CurrentPickup.gameObject.AddComponent<FloatingBob>();
+        var target = CurrentPickup.VisualRoot != null ? CurrentPickup.VisualRoot.gameObject : CurrentPickup.gameObject;
+
+        _floatingBob = target.AddComponent<FloatingBob>();
         _floatingBob.SetAmplitude(0.1f);
         _floatingBob.SetFrequency(0.8f);
         _floatingBob.SetAxis(new Vector3(0.1f, 1f, 0.1f));
