@@ -49,6 +49,9 @@ We are building a "Bizarre Museum" MR experience. Players collect dream fragment
 - Unity 3D-URP project created; backend API client and tester scripts added for ping/create/get verification.
 - Main Menu UI Toolkit layout and styling added with scene navigation controller.
 - Fixed main menu USS to comply with UI Toolkit (border/transition shorthands removed).
+- AR HUD UI Toolkit skeleton added (watermark, network indicator, inventory slots, upload button) with controller stub.
+- AR GameManager stub added: HUD wiring, backend ping, debug collection (keys 1-3), and upload via ApiClient.
+- AR GameManager debug input updated to support new Input System key polling.
 
 ## References
 

@@ -1,0 +1,136 @@
+:root {
+    --bg: #0f0b1f;
+    --accent: #00ffff;
+    --accent-warn: #ff7f50;
+    --text: #e8e8ff;
+    --text-muted: #b8b8d0;
+    --card: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(0, 255, 255, 0.25);
+}
+
+.ar-root {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.05);
+    flex-direction: column;
+    gap: 12px;
+}
+
+.watermark {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    color: var(--accent);
+    opacity: 0.5;
+    unity-font-style: bold;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.top-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mode-pill {
+    padding: 8px 12px;
+    background-color: var(--card);
+    border-width: 1px;
+    border-color: var(--card-border);
+    border-radius: 12px;
+    color: var(--text);
+    letter-spacing: 0.5px;
+}
+
+.net-cluster {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.net-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--card-border);
+    background-color: var(--accent-warn);
+}
+
+.net-indicator.online {
+    background-color: var(--accent);
+}
+
+.net-label {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.inventory-bar {
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.slot {
+    flex-grow: 1;
+    min-width: 100px;
+    min-height: 64px;
+    background-color: var(--card);
+    border-width: 1px;
+    border-color: var(--card-border);
+    border-radius: 10px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.slot-label {
+    color: var(--text);
+    unity-font-style: bold;
+    font-size: 14px;
+}
+
+.slot-sub {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.action-bar {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.primary {
+    height: 40px;
+    padding-left: 14px;
+    padding-right: 14px;
+    background-color: var(--accent);
+    color: #0d0d18;
+    border-width: 1px;
+    border-color: var(--accent);
+    border-radius: 8px;
+    unity-font-style: bold;
+}
+
+.primary:disabled {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: var(--text-muted);
+    border-color: rgba(0, 255, 255, 0.2);
+}
+
+.hint {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.status-label {
+    color: var(--text);
+    font-size: 12px;
+    opacity: 0.85;
+}

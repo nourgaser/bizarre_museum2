@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:Style src="ARHUD.uss" />
+
+  <ui:VisualElement class="ar-root">
+    <ui:Label class="watermark" text="BIZARRE MUSEUM // PROTO" />
+
+    <ui:VisualElement class="top-bar">
+      <ui:Label class="mode-pill" text="Dream Mode (Editor Sim)" />
+      <ui:VisualElement class="net-cluster">
+        <ui:VisualElement name="net-indicator" class="net-indicator offline" />
+        <ui:Label name="net-label" class="net-label" text="Offline" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+
+    <ui:VisualElement class="inventory-bar" name="inventory-bar">
+      <ui:VisualElement class="slot" name="slot-1">
+        <ui:Label class="slot-label" name="slot-label-1" text="Slot 1: Empty" />
+        <ui:Label class="slot-sub" name="slot-sub-1" text="Seed: -" />
+      </ui:VisualElement>
+      <ui:VisualElement class="slot" name="slot-2">
+        <ui:Label class="slot-label" name="slot-label-2" text="Slot 2: Empty" />
+        <ui:Label class="slot-sub" name="slot-sub-2" text="Seed: -" />
+      </ui:VisualElement>
+      <ui:VisualElement class="slot" name="slot-3">
+        <ui:Label class="slot-label" name="slot-label-3" text="Slot 3: Empty" />
+        <ui:Label class="slot-sub" name="slot-sub-3" text="Seed: -" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+
+    <ui:VisualElement class="action-bar">
+      <ui:Button class="primary" name="btn-upload" text="Create Concoction" />
+      <ui:Label class="hint" name="hint-upload" text="Collect 3 items to enable." />
+    </ui:VisualElement>
+
+    <ui:Label class="status-label" name="status-label" text="Status: Idle" />
+  </ui:VisualElement>
+</ui:UXML>
